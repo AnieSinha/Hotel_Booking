@@ -172,15 +172,13 @@ function Admin() {
 
  useEffect(() => {
   const fetchData = async () => {
-    // your existing logic here
+    setLoading(true);
+    await Promise.all([fetchHotels(), fetchRooms()]);
+    setLoading(false);
   };
 
   fetchData();
 }, []);
-  
-useEffect(() => {
-  fetchData();
-}, []); 
 
   const fetchHotels = async () => {
     try {
