@@ -7,7 +7,7 @@ function Rooms() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
-  uuseEffect(() => {
+  useEffect(() => {
    fetchRooms();
 }, [fetchRooms]);
   const fetchRooms = async () => {
