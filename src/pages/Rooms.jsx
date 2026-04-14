@@ -7,18 +7,19 @@ function Rooms() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
-  
-useEffect(() => {
-  const fetchRooms = async () => {
-    // your existing logic here
-  };
-
-  fetchRooms();
-}, []);
-
+  // ✅ CLEAN & SAFE useEffect
   useEffect(() => {
-  fetchRooms();
-}, []);
+    const fetchRooms = async () => {
+      try {
+        const res = await api.get(`/rooms/${hotelId}`);
+        setRooms(res.data);
+      } catch (err) {
+        console.log("Error fetching rooms:", err);
+      }
+    };
+
+    fetchRooms();
+  }, [hotelId]);
 
   return (
     <div style={styles.container}>
@@ -39,7 +40,6 @@ useEffect(() => {
               )}
             </p>
 
-
             <button
               style={styles.button}
               disabled={!room.available}
@@ -47,8 +47,6 @@ useEffect(() => {
             >
               Book Now
             </button>
-
-            
           </div>
         ))}
       </div>
