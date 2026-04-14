@@ -5,8 +5,6 @@ function Admin() {
   const [hotels, setHotels] = useState([]);
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showHotelForm, setShowHotelForm] = useState(false);
-  const [showRoomForm, setShowRoomForm] = useState(false);
   const [editingHotel, setEditingHotel] = useState(null);
   const [editingRoom, setEditingRoom] = useState(null);
 
@@ -62,26 +60,7 @@ function Admin() {
       price_per_night: hotel.price_per_night,
     });
     setShowHotelForm(true);
-  };
-
-  const handleSaveHotel = async () => {
-    try {
-      if (editingHotel) {
-        await api.put(`/admin/hotels/${editingHotel.hotel_id}`, hotelForm);
-        alert("Hotel updated successfully!");
-      } else {
-        await api.post("/admin/hotels", hotelForm);
-        alert("Hotel created successfully!");
-      }
-      setShowHotelForm(false);
-
-      // refresh hotels
-      const res = await api.get("/admin/hotels");
-      setHotels(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }
 
   const deleteHotel = async (id) => {
     if (window.confirm("Are you sure?")) {
@@ -125,24 +104,7 @@ function Admin() {
     setShowRoomForm(true);
   };
 
-  const handleSaveRoom = async () => {
-    try {
-      if (editingRoom) {
-        await api.put(`/admin/rooms/${editingRoom.room_id}`, roomForm);
-        alert("Room updated successfully!");
-      } else {
-        await api.post("/admin/rooms", roomForm);
-        alert("Room created successfully!");
-      }
-      setShowRoomForm(false);
-
-      const res = await api.get("/admin/rooms");
-      setRooms(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+  
   const deleteRoom = async (id) => {
     if (window.confirm("Are you sure?")) {
       try {
