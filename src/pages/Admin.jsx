@@ -170,15 +170,16 @@ function Admin() {
     capacity: "",
   });
 
-  useEffect(() => {
-   fetchData();
-}, [fetchData]);
-
   const fetchData = async () => {
     setLoading(true);
     await Promise.all([fetchHotels(), fetchRooms()]);
     setLoading(false);
   };
+
+  
+useEffect(() => {
+  fetchData();
+}, []); 
 
   const fetchHotels = async () => {
     try {

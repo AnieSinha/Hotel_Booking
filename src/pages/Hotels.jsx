@@ -169,12 +169,12 @@ function Hotels() {
     setSearchCity("");
     fetchHotels();
   };
-<button onClick={handleLogout}>Logout</button>
   // 🚪 LOGOUT
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+  <button onClick={handleLogout}>Logout</button>
 
   return (
     <div style={styles.container}>

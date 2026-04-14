@@ -7,9 +7,7 @@ function Rooms() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-   fetchRooms();
-}, [fetchRooms]);
+  
   const fetchRooms = async () => {
     try {
       const res = await api.get(`/rooms/${hotelId}/all`);
@@ -18,6 +16,10 @@ function Rooms() {
       console.log("Error fetching rooms:", err.response?.data || err.message);
     }
   };
+
+  useEffect(() => {
+  fetchRooms();
+}, []);
 
   return (
     <div style={styles.container}>
