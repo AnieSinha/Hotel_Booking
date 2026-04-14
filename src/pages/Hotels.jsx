@@ -169,7 +169,7 @@ function Hotels() {
     setSearchCity("");
     fetchHotels();
   };
-
+<button onClick={handleLogout}>Logout</button>
   // 🚪 LOGOUT
   const handleLogout = () => {
     localStorage.removeItem("token");

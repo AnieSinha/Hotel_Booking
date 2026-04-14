@@ -171,8 +171,8 @@ function Admin() {
   });
 
   useEffect(() => {
-    fetchData();
-  }, []);
+   fetchData();
+}, [fetchData]);
 
   const fetchData = async () => {
     setLoading(true);

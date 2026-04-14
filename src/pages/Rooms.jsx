@@ -7,10 +7,9 @@ function Rooms() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchRooms();
-  }, [hotelId]);
-
+  uuseEffect(() => {
+   fetchRooms();
+}, [fetchRooms]);
   const fetchRooms = async () => {
     try {
       const res = await api.get(`/rooms/${hotelId}/all`);
